@@ -1,6 +1,5 @@
 // import useSWR from "swr";
-import ArtPieces from "@/components/ArtPieces/ArtPieces";
-
+import Spotlight from "@/components/Spotlight/Spotlight";
 export default function SpotlightPage({ pieces }) {
 
   // ------- moved this to _app.js:
@@ -14,8 +13,7 @@ export default function SpotlightPage({ pieces }) {
 
   return (
     <>
-      {/* adding   <Spotlight  /> component here from Yuval */}
-      <ArtPieces pieces={pieces} />
+      <Spotlight pieces={pieces} />
     </>
   );
 }

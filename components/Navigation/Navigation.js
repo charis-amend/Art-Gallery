@@ -7,13 +7,13 @@ export default function Navigation() {
             <StyledNav className="navbar">
 
                 <button className="navbar-item">
-                    <Link href="../../pages/index.js">Spotlight</Link>
+                    <Link href="/">Spotlight</Link>
                 </button>
                 <button className="navbar-item">
-                    <Link href="../../pages/art-pieces-page/">Pieces</Link>
+                    <Link href="/art-pieces-page/">Pieces</Link>
                 </button>
                 <button className="navbar-item">
-                    <Link href="../../pages/favorites-page/">Favorites</Link>
+                    <Link href="/favorites-page/">Favorites</Link>
                 </button>
 
             </StyledNav>
