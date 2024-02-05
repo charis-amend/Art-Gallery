@@ -1,13 +1,9 @@
 import Head from "next/head";
 import useSWR from "swr";
+import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 
 
 export default function ArtPieces({ pieces }) {
-
-
-    const { data, error, isLoading, mutate } = useSWR("https://example-apis.vercel.app/api/art")
-    if (error) return <div>{error.message}</div>
-    if (isLoading) return <spinner>... loading your art pieces.</spinner>
 
 
     return (
@@ -17,9 +13,24 @@ export default function ArtPieces({ pieces }) {
             </Head>
 
             <ul className="art-pieces-list">
-                <li className="art-pieces-list__item">
+                {
+                    pieces.map((piece) => {
+                        return (
+                            <li
+                                key={piece.slug}
+                                className="art-pieces-list__preview-item">
+                                <ArtPiecePreview
+                                    image={piece.imageSource}
+                                    width={piece.dimensions.width}
+                                    height={piece.dimensions.height}
+                                    title={piece.name}
+                                    artist={piece.artist}
+                                />
+                            </li>
+                        )
+                    })
+                }
 
-                </li>
             </ul>
 
         </>

@@ -21,7 +21,7 @@ const fetcher = async (url) => {
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <SWRConfig value={fetcher}>
+      <SWRConfig value={{ fetcher }}>
         <GlobalStyle />
         <Component {...pageProps} />
       </SWRConfig>
