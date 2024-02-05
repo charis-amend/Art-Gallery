@@ -1,10 +1,10 @@
+import Layout from "@/components/Layout/Layout.js";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
-// const url = "https://example-apis.vercel.app/api/art"
+import useSWR from "swr";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
-
   // If the status code is not in the range 200-299,
   // we still try to parse and throw it.
   if (!response.ok) {
@@ -14,17 +14,30 @@ const fetcher = async (url) => {
     error.status = response.status;
     throw error;
   }
-
   return response.json();
 };
 
+
+
+
 export default function App({ Component, pageProps }) {
+  const { data: pieces, error, isLoading } = useSWR("https://example-apis.vercel.app/api/art", fetcher)
+  if (error) return <div>{error}</div>
+  if (isLoading) return <spinner>... loading your art pieces.</spinner>
+  console.log("============", pieces)
+
   return (
     <>
-      <SWRConfig value={{ fetcher }}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </SWRConfig>
+      {/* <SWRConfig value={{ fetcher }}> */}
+      <GlobalStyle />
+      <Layout>
+        <Component
+          {...pageProps}
+          // pieces from the fetching data:
+          pieces={pieces}
+        />
+      </Layout>
+      {/* </SWRConfig > */}
     </>
   );
 }

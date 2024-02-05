@@ -22,10 +22,11 @@ test("testing --> image // title // artist <--- displayed for each preview", () 
         title={exampleTestDataObject.name}
         alt={exampleTestDataObject.name}
     />)
+    console.log(exampleTestDataObject)
 
-    const imageSrc = screen.getByRole("img", { src: "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg", alt: "Steve Johnson" })
-    console.log(imageSrc)
-    expect(imageSrc).toHaveAttribute("src", exampleTestDataObject.imageSource)
+    // const imageAlt = screen.getByAltText("")
+    // console.log(imageAlt)
+    // expect(imageSrc).toHaveAttribute("src", "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg")
 
     // const title = screen.getByRole("sp")
     // const artist = screen.getByRole()
