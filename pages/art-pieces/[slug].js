@@ -20,6 +20,7 @@ export default function ArtPieceDetailsPage() {
 
   const hit = pieces.find((e) => e.slug === slug);
   console.log("width: ", hit.dimensions.width);
+
   return (
     <>
       <StyledMain>
@@ -30,8 +31,8 @@ export default function ArtPieceDetailsPage() {
           artist={hit.artist}
           year={hit.year}
           genre={hit.genre}
-          width={hit.dimensions.width / 4}
-          height={hit.dimensions.height / 4}
+          width={hit.dimensions.width}
+          height={hit.dimensions.height}
         />
       </StyledMain>
     </>
