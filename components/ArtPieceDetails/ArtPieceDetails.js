@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function ArtPieceDetails({
@@ -12,6 +12,12 @@ export default function ArtPieceDetails({
   width,
   height,
 }) {
+
+
+  const router = useRouter()
+  function handleClick() {
+    router.push("/art-pieces/")
+  }
   return (
     <>
       <StyledArticle className="details-container">
@@ -21,7 +27,7 @@ export default function ArtPieceDetails({
         </article>
         <button
           className="back-to-list-button"
-          onClick={() => router.push("/art-pieces/index")}
+          onClick={handleClick}
         >
           Back to Overview
         </button>

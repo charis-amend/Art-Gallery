@@ -10,7 +10,7 @@ export default function Navigation() {
                     <Link href="/">Spotlight</Link>
                 </button>
                 <button className="navbar-item">
-                    <Link href="/art-pieces-page/">Pieces</Link>
+                    <Link href="/art-pieces/">Pieces</Link>
                 </button>
                 <button className="navbar-item">
                     <Link href="/favorites-page/">Favorites</Link>
