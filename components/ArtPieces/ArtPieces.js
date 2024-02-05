@@ -2,7 +2,6 @@ import Head from "next/head";
 import useSWR from "swr";
 import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 
-
 export default function ArtPieces({ pieces }) {
 
 

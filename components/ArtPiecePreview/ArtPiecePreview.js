@@ -2,8 +2,6 @@ import Image from "next/image"
 import styled from "styled-components"
 export default function ArtPiecePreview({ image, width, height, title, artist }) {
 
-    console.log(image)
-
     return (
         <>
             <StyledImage
@@ -12,6 +10,7 @@ export default function ArtPiecePreview({ image, width, height, title, artist })
                 width={width}
                 height={height}
                 alt={title}
+                priority={true}
             />
 
             <span
