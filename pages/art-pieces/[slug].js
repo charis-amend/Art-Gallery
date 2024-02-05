@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import useSWR from "swr";
 import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
+import styled from "styled-components";
 
 export default function ArtPieceDetailsPage() {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function ArtPieceDetailsPage() {
   console.log("width: ", hit.dimensions.width);
   return (
     <>
-      <main>
+      <StyledMain>
         <Head>Details</Head>
         <ArtPieceDetails
           image={hit.imageSource}
@@ -32,13 +33,16 @@ export default function ArtPieceDetailsPage() {
           width={hit.dimensions.width / 4}
           height={hit.dimensions.height / 4}
         />
-        <button
-          className="back-to-list-button"
-          onClick={() => router.push("/art-pieces/index")}
-        >
-          Back to Overview
-        </button>
-      </main>
+      </StyledMain>
     </>
   );
 }
+
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 20px;
+`;
