@@ -16,12 +16,23 @@ export default function ArtPieceDetails({
   function handleClick() {
     router.push("/art-pieces/");
   }
+
+  const artistUpper = artist
+    .split(" ")
+    .map((e) => {
+      return e
+        .split("")
+        .map((e, i) => (i === 0 ? e.toUpperCase() : e))
+        .join("");
+    })
+    .join(" ");
+
   return (
     <>
       <StyledArticle className="details-container">
         <Image src={image} alt={title} width={width / 4} height={height / 4} />
         <article>
-          {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+          {`The artist ${artistUpper} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
         <button className="back-to-list-button" onClick={handleClick}>
           Back to Overview
