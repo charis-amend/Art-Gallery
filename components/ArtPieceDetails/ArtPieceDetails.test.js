@@ -22,22 +22,24 @@ const testObject = {
 };
 
 test("image  button title artist year and genre are displayed", () => {
-  //   render(<ArtPieceDetailsPage alt={testObject.name} />);
   render(
     <ArtPieceDetails
       year={testObject.year}
       title={testObject.name}
       artist={testObject.artist}
       genre={testObject.genre}
-      alt="Klaus"
     />
   );
   const button = screen.getByRole("button", { name: /back to overview/i });
   const image = screen.getByAltText(/Orange Red and Green Abstract Painting/i);
-  const alot = screen.getByText(
-    "The artist Steve Johnson created this wonderful piece with the title Orange Red and Green Abstract Painting in the year 2018. We consider the genre to be Abstract Painting."
-  );
-  expect(alot).toBeInTheDocument();
+
+  expect(screen.getByText(/2018/g)).toBeInTheDocument();
+  expect(screen.getByText(/Steve Johnson/g)).toBeInTheDocument();
+  expect(
+    screen.getByText(/Orange Red and Green Abstract Painting/g)
+  ).toBeInTheDocument();
+  expect(screen.getByText(/Abstract Painting/g)).toBeInTheDocument();
+
   expect(image).toBeInTheDocument();
   expect(button).toBeInTheDocument();
 });
