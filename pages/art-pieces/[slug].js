@@ -24,7 +24,9 @@ export default function ArtPieceDetailsPage() {
   return (
     <>
       <StyledMain>
-        <Head>Details</Head>
+        <Head>
+          <title>Details</title>
+        </Head>
         <ArtPieceDetails
           image={hit.imageSource}
           title={hit.name}
