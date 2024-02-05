@@ -39,6 +39,7 @@ test("image  button title artist year and genre are displayed", () => {
   );
   expect(alot).toBeInTheDocument();
   expect(image).toBeInTheDocument();
+  expect(button).toBeInTheDocument();
 });
 
 // test("button is displayed", () => {
