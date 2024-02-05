@@ -1,0 +1,32 @@
+import ArtPiecePreview from "./ArtPiecePreview";
+import { render, screen } from "@testing-library/react";
+
+const exampleTestDataObject =
+{
+    "slug": "orange-red-and-green",
+    "artist": "Steve Johnson",
+    "name": "Orange Red and Green Abstract Painting",
+    "imageSource": "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg",
+    "year": "2018",
+    "genre": "Abstract Painting",
+    "colors": ["#0f5855", "#e6ba15", "#b42011", "#cec4c6", "#d5561f"],
+    "dimensions": { "height": 2432, "width": 1920, "type": "jpg" }
+}
+
+test("testing --> image // title // artist <--- displayed for each preview", () => {
+
+    render(<ArtPiecePreview
+        image={exampleTestDataObject.imageSource}
+        width={exampleTestDataObject.dimensions.width}
+        height={exampleTestDataObject.dimensions.height}
+        title={exampleTestDataObject.name}
+        alt={exampleTestDataObject.name}
+    />)
+
+    const imageSrc = screen.getByRole("img", { src: "https://example-apis.vercel.app/assets/art/orange-red-and-green.jpg", alt: "Steve Johnson" })
+    console.log(imageSrc)
+    expect(imageSrc).toHaveAttribute("src", exampleTestDataObject.imageSource)
+
+    // const title = screen.getByRole("sp")
+    // const artist = screen.getByRole()
+})

@@ -2,6 +2,7 @@ import Image from "next/image"
 import styled from "styled-components"
 export default function ArtPiecePreview({ image, width, height, title, artist }) {
 
+    console.log(image)
 
     return (
         <>
