@@ -25,9 +25,13 @@ export default function ArtPieceDetailsPage({ pieces, onSubmitComment, artPieces
           genre={hit.genre}
           width={hit.dimensions.width}
           height={hit.dimensions.height}
+<<<<<<< HEAD:pages/art-pieces/[slug].js
+          colors={hit.colors}
+=======
           slug={hit.slug}
           onSubmitComment={onSubmitComment}
           artPiecesInfo={artPiecesInfo}
+>>>>>>> main:pages/art-pieces/[slug]/index.js
         />
       </StyledMain>
     </>
