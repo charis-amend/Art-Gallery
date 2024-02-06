@@ -4,6 +4,7 @@ import Head from "next/head";
 import useSWR from "swr";
 import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
 import styled from "styled-components";
+import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 
 export default function ArtPieceDetailsPage({ pieces }) {
   const router = useRouter();

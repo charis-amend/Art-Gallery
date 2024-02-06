@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function ArtPieceDetails({
   image,
@@ -10,7 +11,9 @@ export default function ArtPieceDetails({
   year,
   genre,
   width,
-  height
+  height,
+  isFavorite,
+  onToggleFavorite
 }) {
 
 
@@ -21,6 +24,10 @@ export default function ArtPieceDetails({
   return (
     <>
       <StyledArticle className="details-container">
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
         <Image src={image} alt={title} width={width} height={height} />
         <article>
           {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
