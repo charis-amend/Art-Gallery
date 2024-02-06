@@ -17,24 +17,26 @@ export default function Spotlight({ pieces, isFavorite, onToggleFavorite, artPie
   //   console.log("Random image source:", randomPiece.imageSource);
 
   return (
-    <figure>
+    <>
       <FavoriteButton
         isFavorite={
           artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === randomPiece.slug)?.isFavorite
         }
         onToggleFavorite={() => onToggleFavorite(randomPiece.slug)}
       />
-      <Link href={`/art-pieces/${randomPiece.slug}`}>
-        <StyledImage
-          className="art-pieces-list-preview-spotlight__img"
-          src={randomPiece.imageSource}
-          alt={randomPiece.name}
-          width={randomPiece.dimensions.width}
-          height={randomPiece.dimensions.height}
-        />
-        <figcaption>{randomPiece.artist}</figcaption>
-      </Link>
-    </figure>
+      <figure>
+        <Link href={`/art-pieces/${randomPiece.slug}`}>
+          <StyledImage
+            className="art-pieces-list-preview-spotlight__img"
+            src={randomPiece.imageSource}
+            alt={randomPiece.name}
+            width={randomPiece.dimensions.width}
+            height={randomPiece.dimensions.height}
+          />
+          <figcaption>{randomPiece.artist}</figcaption>
+        </Link>
+      </figure>
+    </>
   );
 }
 

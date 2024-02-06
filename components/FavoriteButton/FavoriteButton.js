@@ -2,8 +2,6 @@ import Image from "next/image"
 
 
 export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
-    console.log(isFavorite) // undefined
-    // isFavorite = true
     return (
         <>
             <button

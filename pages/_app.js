@@ -24,13 +24,10 @@ const fetcher = async (url) => {
 
 export default function App({ Component, pageProps }) {
   const { data: pieces, error, isLoading } = useSWR("https://example-apis.vercel.app/api/art", fetcher)
-  console.log("============", pieces)
 
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPiecesInfo", { defaultValue: [] })
-  console.log("BEFORE HANDLE --- app.js artpieces innfo console log", artPiecesInfo)
 
   function handleToggleFavorite(slug) {
-    console.log("click")
     if (artPiecesInfo.find((piece) => piece.slug === slug)) {
       // if there is a artpieceinfo (which has a slug) that matches the slug of the clicked artpiece then do this:
       setArtPiecesInfo(
@@ -56,7 +53,6 @@ export default function App({ Component, pageProps }) {
       )
     }
   }
-  console.log("--- app.js artpieces innfo console log", artPiecesInfo)
 
   if (error) return <div>{error}</div>
   if (isLoading) return <spinner>... loading your art pieces.</spinner>
