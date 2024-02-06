@@ -27,6 +27,8 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPiecesInfo", { defaultValue: [] })
 
+
+
   function handleToggleFavorite(slug) {
     if (artPiecesInfo.find((piece) => piece.slug === slug)) {
       // if there is a artpieceinfo (which has a slug) that matches the slug of the clicked artpiece then do this:

@@ -9,16 +9,6 @@ import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 export default function ArtPieceDetailsPage({ pieces }) {
   const router = useRouter();
   const slug = router.query.slug;
-  console.log("-------->", pieces)
-  // const { data, error, isLoading, mutate } = useSWR(
-  //   "https://example-apis.vercel.app/api/art", fetcher
-  // );
-  // if (error) return <div>{error}</div>;
-  // if (isLoading) return <spinner>... loading your art pieces.</spinner>;
-  // const pieces = [...data];
-  // console.log("myPices ", pieces);
-  // console.log("slug from router: ", slug);
-
   const hit = pieces.find((e) => e.slug === slug);
 
   return (

@@ -15,8 +15,6 @@ export default function ArtPieceDetails({
   isFavorite,
   onToggleFavorite
 }) {
-
-
   const router = useRouter()
   function handleClick() {
     router.push("/art-pieces/")
