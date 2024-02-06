@@ -35,6 +35,7 @@ export default function ArtPieceDetailsPage() {
           genre={hit.genre}
           width={hit.dimensions.width}
           height={hit.dimensions.height}
+          colors={hit.colors}
         />
       </StyledMain>
     </>

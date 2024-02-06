@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 export default function ArtPieceDetails({
+  colors,
   image,
   title,
   artist,
@@ -49,6 +50,12 @@ export default function ArtPieceDetails({
         <article>
           {`The artist ${artistUpper} created this ${fancyWord} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
+        <h3>Color-Palette:</h3>
+        <StyledDivContainer>
+          {colors.map((e, i) => {
+            return <StyledDiv key={i} style={{ backgroundColor: e }} />;
+          })}
+        </StyledDivContainer>
         <button className="back-to-list-button" onClick={handleClick}>
           Back to Overview
         </button>
@@ -67,4 +74,26 @@ const StyledArticle = styled.article`
   align-items: center;
   gap: 20px;
   padding: 20px;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 25%;
+  height: 40px;
+  padding: 2px;
+`;
+
+const StyledDivContainer = styled.div`
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 0px;
+  padding: 2px;
+  width: 100%;
+  height: 100%;
 `;
