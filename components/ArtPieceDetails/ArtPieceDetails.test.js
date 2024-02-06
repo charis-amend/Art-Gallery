@@ -28,6 +28,7 @@ test("image  button title artist year and genre are displayed", () => {
       title={testObject.name}
       artist={testObject.artist}
       genre={testObject.genre}
+      colors={testObject.colors}
     />
   );
   const button = screen.getByRole("button", { name: /back to overview/i });

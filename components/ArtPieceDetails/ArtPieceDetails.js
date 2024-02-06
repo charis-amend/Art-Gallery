@@ -46,7 +46,13 @@ export default function ArtPieceDetails({
   return (
     <>
       <StyledArticle className="details-container">
-        <Image src={image} alt={title} width={width / 4} height={height / 4} />
+        <Image
+          src={image}
+          alt={title}
+          width={width / 4}
+          height={height / 4}
+          priority={true}
+        />
         <article>
           {`The artist ${artistUpper} created this ${fancyWord} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
