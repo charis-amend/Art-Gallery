@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton/FavoriteButton"
 import Link from "next/link";
 
-export default function Spotlight({ pieces, isFavorite, onToggleFavorite, artPiecesInfo }) {
+export default function Spotlight({ pieces, onToggleFavorite, isFavorite }) {
   function getRandomArtPiece(max) {
     return Math.floor(Math.random() * max);
   }
@@ -11,18 +11,11 @@ export default function Spotlight({ pieces, isFavorite, onToggleFavorite, artPie
   const randomIndex = getRandomArtPiece(pieces.length);
   const randomPiece = pieces[randomIndex];
 
-  //   console.log("Pieces object: ", pieces);
-  //   console.log("How many pieces? ", pieces.length);
-  //   console.log("Random art piece: ", randomPiece);
-  //   console.log("Random image source:", randomPiece.imageSource);
-
   return (
     <>
       <FavoriteButton
-        isFavorite={
-          artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === randomPiece.slug)?.isFavorite
-        }
-        onToggleFavorite={() => onToggleFavorite(randomPiece.slug)}
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
       />
       <figure>
         <Link href={`/art-pieces/${randomPiece.slug}`}>
