@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
+import FavoriteButton from "../FavoriteButton/FavoriteButton"
+import Link from "next/link";
 
-export default function Spotlight({ pieces }) {
+export default function Spotlight({ pieces, onToggleFavorite, isFavorite }) {
   function getRandomArtPiece(max) {
     return Math.floor(Math.random() * max);
   }
@@ -9,22 +11,25 @@ export default function Spotlight({ pieces }) {
   const randomIndex = getRandomArtPiece(pieces.length);
   const randomPiece = pieces[randomIndex];
 
-  //   console.log("Pieces object: ", pieces);
-  //   console.log("How many pieces? ", pieces.length);
-  //   console.log("Random art piece: ", randomPiece);
-  //   console.log("Random image source:", randomPiece.imageSource);
-
   return (
-    <figure>
-      <StyledImage
-        className="art-pieces-list-preview-spotlight__img"
-        src={randomPiece.imageSource}
-        alt={randomPiece.name}
-        width={randomPiece.dimensions.width}
-        height={randomPiece.dimensions.height}
+    <>
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
       />
-      <figcaption>{randomPiece.artist}</figcaption>
-    </figure>
+      <figure>
+        <Link href={`/art-pieces/${randomPiece.slug}`}>
+          <StyledImage
+            className="art-pieces-list-preview-spotlight__img"
+            src={randomPiece.imageSource}
+            alt={randomPiece.name}
+            width={randomPiece.dimensions.width}
+            height={randomPiece.dimensions.height}
+          />
+          <figcaption>{randomPiece.artist}</figcaption>
+        </Link>
+      </figure>
+    </>
   );
 }
 

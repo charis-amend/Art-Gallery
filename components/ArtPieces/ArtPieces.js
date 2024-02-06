@@ -4,7 +4,7 @@ import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export default function ArtPieces({ pieces }) {
+export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
     return (
         <>
             <Head>
@@ -28,6 +28,10 @@ export default function ArtPieces({ pieces }) {
                                     title={piece.name}
                                     artist={piece.artist}
                                     slug={piece.slug}
+                                    isFavorite={
+                                        artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === piece.slug)?.isFavorite
+                                    }
+                                    onToggleFavorite={() => onToggleFavorite(piece.slug)}
                                 />
                             </li>
                         )

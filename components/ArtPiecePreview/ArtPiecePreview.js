@@ -2,10 +2,15 @@ import Image from "next/image"
 import styled from "styled-components"
 import { useRouter } from "next/router"
 import Link from "next/link"
+import FavoriteButton from "../FavoriteButton/FavoriteButton"
 
-export default function ArtPiecePreview({ slug, image, width, height, title, artist }) {
+export default function ArtPiecePreview({ slug, image, width, height, title, artist, isFavorite, onToggleFavorite }) {
     return (
         <>
+            <FavoriteButton
+                isFavorite={isFavorite}
+                onToggleFavorite={onToggleFavorite}
+            />
             <Link href={`/art-pieces/${slug}`}>
                 <StyledImage
                     className="art-pieces-list-preview-item__img"

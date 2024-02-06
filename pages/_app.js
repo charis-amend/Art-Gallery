@@ -2,6 +2,8 @@ import Layout from "@/components/Layout/Layout.js";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useSWR from "swr";
+import { useEffect, useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -22,22 +24,55 @@ const fetcher = async (url) => {
 
 export default function App({ Component, pageProps }) {
   const { data: pieces, error, isLoading } = useSWR("https://example-apis.vercel.app/api/art", fetcher)
+
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPiecesInfo", { defaultValue: [] })
+
+
+
+  function handleToggleFavorite(slug) {
+    if (artPiecesInfo.find((piece) => piece.slug === slug)) {
+      // if there is a artpieceinfo (which has a slug) that matches the slug of the clicked artpiece then do this:
+      setArtPiecesInfo(
+        // setting the global state of the artpiecesinfo-array new with mapping:
+        // map over each artpieceinfo and update the array, but only...
+        artPiecesInfo.map((artpieceinfo) =>
+          // ... only update  the artpieceinfo which matches the clicked-artpiece-slug 
+          artpieceinfo.slug === slug ?
+            // spread the rest of the object, and switch the isFavorite value to opposite value
+            { ...artpieceinfo, isFavorite: !artpieceinfo.isFavorite }
+            :
+            // if doesnt match then just return the object without any change:
+            artpieceinfo
+        )
+      )
+      // if there is not a (piece) => piece.slug === slugOfArtPieceClicked, then set it to true:
+    } else {
+      setArtPiecesInfo(
+        [
+          ...artPiecesInfo,
+          { slug, isFavorite: true }
+        ]
+      )
+    }
+  }
+
   if (error) return <div>{error}</div>
   if (isLoading) return <spinner>... loading your art pieces.</spinner>
-  console.log("============", pieces)
 
   return (
     <>
-      {/* <SWRConfig value={{ fetcher }}> */}
       <GlobalStyle />
-      <Layout>
-        <Component
-          {...pageProps}
-          // pieces from the fetching data:
-          pieces={pieces}
-        />
-      </Layout>
-      {/* </SWRConfig > */}
+      <SWRConfig value={{ fetcher }}>
+        <Layout>
+          <Component
+            {...pageProps}
+            // pieces from the fetching data:
+            pieces={pieces}
+            artPiecesInfo={artPiecesInfo}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        </Layout>
+      </SWRConfig>
     </>
   );
 }
