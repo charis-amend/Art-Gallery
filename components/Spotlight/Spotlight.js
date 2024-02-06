@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Spotlight({ pieces }) {
+  console.log(pieces)
   function getRandomArtPiece(max) {
     return Math.floor(Math.random() * max);
   }
