@@ -4,6 +4,7 @@ import { SWRConfig } from "swr";
 import useSWR from "swr";
 import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { uid } from "uid";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -26,8 +27,6 @@ export default function App({ Component, pageProps }) {
   const { data: pieces, error, isLoading } = useSWR("https://example-apis.vercel.app/api/art", fetcher)
 
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPiecesInfo", { defaultValue: [] })
-
-
 
   function handleToggleFavorite(slug) {
     if (artPiecesInfo.find((piece) => piece.slug === slug)) {
@@ -56,6 +55,21 @@ export default function App({ Component, pageProps }) {
     }
   }
 
+  // COMMENTS COMPONENT
+  function handleAddComment(newComment, slug) {
+    const date = new Date().toLocaleDateString("en-gb", {
+      dateStyle: "medium",
+    });
+    const time = new Date().toLocaleTimeString("en-gb");
+    const artPiece = slug;
+    setArtPiecesInfo([
+      { id: uid(), date, time, artPiece, ...newComment },
+      ...artPiecesInfo,
+    ]);
+  }
+  console.log("Do we have comments? ", artPiecesInfo);
+  // COMMENTS COMPONENT
+
   if (error) return <div>{error}</div>
   if (isLoading) return <spinner>... loading your art pieces.</spinner>
 
@@ -70,6 +84,9 @@ export default function App({ Component, pageProps }) {
             pieces={pieces}
             artPiecesInfo={artPiecesInfo}
             onToggleFavorite={handleToggleFavorite}
+            comments={artPiecesInfo}
+            onSubmitComment={handleAddComment}
+
           />
         </Layout>
       </SWRConfig>
