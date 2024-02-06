@@ -6,7 +6,11 @@ import ArtPieceDetails from "@/components/ArtPieceDetails/ArtPieceDetails";
 import styled from "styled-components";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 
-export default function ArtPieceDetailsPage({ pieces, onSubmitComment, artPiecesInfo }) {
+export default function ArtPieceDetailsPage({
+  pieces,
+  onSubmitComment,
+  artPiecesInfo,
+}) {
   const router = useRouter();
   const slug = router.query.slug;
   const hit = pieces.find((e) => e.slug === slug);
@@ -25,13 +29,10 @@ export default function ArtPieceDetailsPage({ pieces, onSubmitComment, artPieces
           genre={hit.genre}
           width={hit.dimensions.width}
           height={hit.dimensions.height}
-<<<<<<< HEAD:pages/art-pieces/[slug].js
           colors={hit.colors}
-=======
           slug={hit.slug}
           onSubmitComment={onSubmitComment}
           artPiecesInfo={artPiecesInfo}
->>>>>>> main:pages/art-pieces/[slug]/index.js
         />
       </StyledMain>
     </>
