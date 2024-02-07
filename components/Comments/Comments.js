@@ -8,6 +8,8 @@ export default function Comments({ artPiecesInfo }) {
     (e) => e.comment && e.slug === slug
   );
   console.log("fic", filteredComments && filteredComments.comment);
+
+
   return (
     <>
       <div className="comments-container">
