@@ -15,6 +15,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
                     alt=""
                     width={50}
                     height={50}
+                    className="button-img"
                 />
             </button>
         </>
