@@ -11,16 +11,21 @@ export default function Comments({ artPiecesInfo }) {
 
 
   return (
-    <div className="comments">
-      <h3>Comments</h3>
-      {filteredComments &&
-        filteredComments?.comment.map((e) => (
-          <ul key={e.id}>
-            <li>
-              &#34;{e.comment}&#34; &#40;{e.date}, {e.time}&#41;
-            </li>
-          </ul>
-        ))}
-    </div>
+    <>
+      <div className="comments-container">
+        <h3>Comments</h3>
+        {filteredComments &&
+          filteredComments?.comment.map((e) => (
+            <ul key={e.id}>
+              <li>
+                <div className="comment-text">&#34;{e.comment}&#34; </div>
+                <div className="comment-date-time">
+                  &#40;{e.date}, {e.time}&#41;
+                </div>
+              </li>
+            </ul>
+          ))}
+      </div>
+    </>
   );
 }

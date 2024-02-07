@@ -6,8 +6,12 @@
 
 :root {
   --color-white: white;
+  --color-light: lightpink;
   --color-dark: #333333;
   --color-black: black;
+  --color-nav: white;
+
+  color: light;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,7 +26,9 @@ body {
   line-height: 1.6;
   font-size: 20px;
 
-  margin-bottom: 80px;
+  background: linear-gradient(to top, var(--color-white), var(--color-light));
+
+  background-attachment: fixed;
 }
 
 main {
@@ -30,6 +36,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 80px;
 }
 
 a {
@@ -55,6 +63,33 @@ ul {
   list-style: none;
 }
 
+h1 {
+  padding: 10px;
+  color: var(--color-dark);
+}
+
+h2 {
+  padding: 10px;
+  color: var(--color-dark);
+  text-transform: capitalize;
+}
+
+h3 {
+  padding: 10px;
+  color: var(--color-dark);
+  text-transform: capitalize;
+}
+
+h5 {
+  color: var(--color-dark);
+  text-transform: capitalize;
+}
+
+h6 {
+  color: var(--color-dark);
+  text-transform: capitalize;
+}
+
 .navbar {
   height: 50px;
   display: grid;
@@ -65,22 +100,22 @@ ul {
   left: 0;
   width: 100%;
 
-  box-shadow: var(--color-dark) 0 1px 30px;
+  box-shadow: var(--color-light) 0 1px 30px;
 }
 
 .navbar-item {
   font-size: 14pt;
-  background-color: var(--color-dark);
+  background-color: var(--color-white);
   text-align: center;
 }
 
 .navbar-item:not(:last-child) {
-  border-right: 1px solid var(--color-white);
+  border-right: 1px solid var(--color-dark);
 }
 
 .navbar-item a {
   font-size: 14pt;
-  color: var(--color-white);
+  color: var(--color-dark);
 }
 
 /* ///   NAVIGATION    /// */
@@ -96,17 +131,18 @@ ul {
   width: 80vw;
 }
 
-/* .favorite-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-} */
+.favorite-button img {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg)
+    brightness(102%) contrast(102%);
+}
 
 .art-pieces-list-preview-spotlight__img {
   width: 100%;
   height: auto;
 
   border-radius: 1%;
+
+  box-shadow: var(--color-dark) 0 0px 30px;
 }
 
 figcaption {
@@ -138,10 +174,11 @@ figcaption {
   align-items: center;
 
   text-align: center;
-  text-decoration: none;
 
   position: relative;
   width: 50vw;
+
+  margin: 50px;
 }
 
 .favorite-button {
@@ -159,6 +196,14 @@ figcaption {
   height: auto;
 
   border-radius: 1%;
+
+  box-shadow: var(--color-dark) 0 0px 30px;
+
+  margin-bottom: 10px;
+}
+
+.art-pieces-list-preview-item__caption {
+  text-decoration: none;
 }
 
 /* ///   ArtPieceDetails    /// */
@@ -191,4 +236,61 @@ figcaption {
   margin-right: auto;
   font-style: italic;
 }
+
 /* ///   ArtPieceDetails    /// */
+
+/* ///   COMMENTS    /// */
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 80vw;
+  margin-top: 30px;
+}
+
+.comment-text {
+  font-style: italic;
+  font-size: 15pt;
+}
+
+.comment-date-time {
+  font-size: 12pt;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-dark);
+  width: 80vw;
+  padding-bottom: 5px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* margin-top: 20px; */
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment-text-input {
+  width: 80vw;
+
+  border-radius: 8px;
+  border: 2px solid var(--color-dark);
+  padding: 0.8em 1.2em;
+}
+
+.send-comment-button {
+  margin-top: 10px;
+
+  border-radius: 8px;
+  border: 2px solid var(--color-dark);
+  padding: 0.2em 1.2em;
+  background-color: var(--color-white);
+}
+
+/* ///   COMMENTS    /// */
