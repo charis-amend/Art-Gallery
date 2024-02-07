@@ -1,12 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import Spotlight from "./Spotlight";
-
 // Test for:
 // - The art piece image is displayed
 // - The art piece artist is displayed
 
 // Example data:
-const pieces = [
+const testPieces = [
   {
     slug: "orange-red-and-green",
     artist: "Steve Johnson",
@@ -21,11 +20,10 @@ const pieces = [
 ];
 
 test("renders image and artist for spotlight page", () => {
-  render(<Spotlight pieces={pieces} />);
+  render(<Spotlight pieces={testPieces} />);
 
   const artistElement = screen.getByText("Steve Johnson");
-
+  const imageElement = screen.getByAltText("Orange Red and Green Abstract Painting");
   expect(artistElement).toBeInTheDocument();
-
-  // STILL NEED TO ADD IMAGE TEST
+  expect(imageElement).toBeInTheDocument()
 });

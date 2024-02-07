@@ -8,6 +8,7 @@ export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
                 type="button"
                 className="favorite-button"
                 onClick={onToggleFavorite}
+                data-testid="button-id"
             >
                 <Image
                     src={isFavorite === true ? "/assets/heart-filled.svg" : "/assets/heart_transparent.svg"}
