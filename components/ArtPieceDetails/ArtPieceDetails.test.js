@@ -21,6 +21,8 @@ const testObject = {
   dimensions: { height: 2432, width: 1920, type: "jpg" },
 };
 
+
+
 test("image  button title artist year and genre are displayed", () => {
   render(
     <ArtPieceDetails
@@ -31,7 +33,7 @@ test("image  button title artist year and genre are displayed", () => {
       colors={testObject.colors}
     />
   );
-  const button = screen.getByRole("button", { name: /back to overview/i });
+  const button = screen.getByRole("button", { name: "Back to Overview" });
   const image = screen.getByAltText(/Orange Red and Green Abstract Painting/i);
 
   expect(screen.getByText(/2018/g)).toBeInTheDocument();
@@ -45,11 +47,3 @@ test("image  button title artist year and genre are displayed", () => {
   expect(button).toBeInTheDocument();
 });
 
-// test("button is displayed", () => {
-//   const data = testObject;
-//   render(<ArtPieceDetailsPage />);
-
-//   const button = screen.getByRole("button", { name: /Back to Overview/i });
-
-//   expect(button).toBeInTheDocument();
-// });

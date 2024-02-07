@@ -1,6 +1,7 @@
 import ArtPiecePreview from "./ArtPiecePreview";
 import { render, screen } from "@testing-library/react";
 
+
 const exampleTestDataObject =
 {
     "slug": "orange-red-and-green",
@@ -30,4 +31,13 @@ test("testing --> image // title // artist <--- displayed for each preview", () 
 
     // const title = screen.getByRole("sp")
     // const artist = screen.getByRole()
+
+
+})
+
+//  The favorite-button is displayed in each entry in the list view 🖼️
+test("The favorite-button is displayed in each entry in the list view", () => {
+    render(<ArtPiecePreview />)
+    const favButtons = screen.getAllByRole("button")
+    expect(favButtons).toHaveLength(1)
 })
