@@ -90,16 +90,16 @@ export default function ArtPieceDetails({
         </p>
       </article>
 
-        <article className="art-piece-description">
-          {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
-        </article>
-        <h3>Color Palette:</h3>
-        <StyledDivContainer>
-          {colors.map((e, i) => (
-            <StyledDiv key={i} style={{ backgroundColor: e }} />
-          ))}
-        </StyledDivContainer>
-      </StyledArticle>
+      <article className="art-piece-description">
+        {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+      </article>
+      <h3>Color Palette:</h3>
+      <StyledDivContainer>
+        {colors.map((e, i) => (
+          <StyledDiv key={i} style={{ backgroundColor: e }} />
+        ))}
+      </StyledDivContainer>
+
       {/* <Comments comments={comments} /> */}
 
       <Comments artPiecesInfo={artPiecesInfo} />
