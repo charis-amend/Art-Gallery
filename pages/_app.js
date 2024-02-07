@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
       dateStyle: "medium",
     });
     const time = new Date().toLocaleTimeString("en-gb");
-    const artPiece = slug;
+    //const artPiece = slug;
     const comment = newComment.comment;
 
     if (artPiecesInfo.find((e) => e.slug === slug)) {
@@ -105,6 +105,7 @@ export default function App({ Component, pageProps }) {
             comments={artPiecesInfo}
             onSubmitComment={handleAddComment}
             isFavorite={artPiecesInfo.isFavorite}
+            setArtPiecesInfo={setArtPiecesInfo}
           />
         </Layout>
       </SWRConfig>

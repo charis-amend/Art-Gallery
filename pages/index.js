@@ -1,7 +1,11 @@
 // import useSWR from "swr";
 import Spotlight from "@/components/Spotlight/Spotlight";
-export default function SpotlightPage({ pieces, onToggleFavorite, isFavorite }) {
-
+export default function SpotlightPage({
+  pieces,
+  onToggleFavorite,
+  isFavorite,
+  artPiecesInfo,
+}) {
   // ------- moved this to _app.js:
   // const { data, error, isLoading, mutate } = useSWR("https://example-apis.vercel.app/api/art")
   // if (error) return <div>{error}</div>
@@ -17,6 +21,7 @@ export default function SpotlightPage({ pieces, onToggleFavorite, isFavorite }) 
         pieces={pieces}
         onToggleFavorite={onToggleFavorite}
         isFavorite={isFavorite}
+        artPiecesInfo={artPiecesInfo}
       />
     </>
   );

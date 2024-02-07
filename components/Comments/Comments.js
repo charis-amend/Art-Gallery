@@ -15,7 +15,7 @@ export default function Comments({ artPiecesInfo }) {
         filteredComments?.comment.map((e) => (
           <ul key={e.id}>
             <li>
-              {e.comment} ({e.date}, {e.time})<br></br>
+              &#34;{e.comment}&#34; &#40;{e.date}, {e.time}&#41;
             </li>
           </ul>
         ))}
