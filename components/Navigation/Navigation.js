@@ -6,7 +6,9 @@ export default function Navigation() {
     <>
       <nav className="navbar">
         <button className="navbar-item">
-          <Link href="/">Spotlight</Link>
+          <Link prefetch={false} href="/">
+            Spotlight
+          </Link>
         </button>
         <button className="navbar-item">
           <Link href="/art-pieces/">Pieces</Link>

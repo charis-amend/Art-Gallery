@@ -28,3 +28,19 @@ test("Clicking Piecs shows the Pieces Page", () => {
     })
     expect(linkPieces).toBeInTheDocument()
 })
+
+test("A navigation link labeled Favorites is displayed", () => {
+    render(<Navigation />);
+
+    const link = screen.getByText(/Favorites/i);
+
+    expect(link).toBeInTheDocument();
+});
+
+test("Clicking Navigation shows the Navigation Page", () => {
+    render(<Navigation />)
+    const linkFavorites = screen.getByRole("link", {
+        name: "Favorites"
+    })
+    expect(linkFavorites).toBeInTheDocument()
+})

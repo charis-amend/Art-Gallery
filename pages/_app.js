@@ -32,7 +32,10 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "artPiecesInfo",
-    { defaultValue: [] }
+
+    {
+      defaultValue: [],
+    }
   );
 
   function handleToggleFavorite(slug) {
@@ -62,12 +65,28 @@ export default function App({ Component, pageProps }) {
       dateStyle: "medium",
     });
     const time = new Date().toLocaleTimeString("en-gb");
-    const artPiece = slug;
-    setArtPiecesInfo([
-      { id: uid(), date, time, artPiece, ...newComment },
-      ...artPiecesInfo,
-    ]);
+    //const artPiece = slug;
+    const comment = newComment.comment;
+
+    if (artPiecesInfo.find((e) => e.slug === slug)) {
+      setArtPiecesInfo((prevState) =>
+        prevState.map((e) =>
+          e.slug === slug
+            ? {
+                ...e,
+                comment: [...(e.comment || []), { comment, date, time }],
+              }
+            : e
+        )
+      );
+    } else {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { slug, id: uid(), comment: [{ comment, date, time }] },
+      ]);
+    }
   }
+
   console.log("Do we have comments? ", artPiecesInfo);
   // COMMENTS COMPONENT
 
@@ -87,6 +106,9 @@ export default function App({ Component, pageProps }) {
             onToggleFavorite={handleToggleFavorite}
             comments={artPiecesInfo}
             onSubmitComment={handleAddComment}
+
+            isFavorite={artPiecesInfo.isFavorite}
+            setArtPiecesInfo={setArtPiecesInfo}
           />
         </Layout>
       </SWRConfig>

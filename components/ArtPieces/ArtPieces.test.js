@@ -32,3 +32,4 @@ test("all art pieces are displayed as items in the list", () => {
     expect(listItems).toHaveLength(2);
 }
 )
+

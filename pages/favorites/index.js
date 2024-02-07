@@ -1,21 +1,19 @@
 import ArtPieces from "@/components/ArtPieces/ArtPieces";
+
+
 import React from "react";
 
-//mockup:
-// const artPiecesInfo = [
-//   {
-//     slug: "orange-red-and-green",
-//     isFavorite: true,
-//   },
-//   { slug: "blue-and-red", isFavorite: false },
-// ];
+export default function Favorites({ pieces, artPiecesInfo, onToggleFavorite }) {
 
-// artPiecesInfo needs to be passed a prop, mockup deleted
-
-export default function Favorites({ pieces, artPiecesInfo }) {
   const filteredFavorites = artPiecesInfo.filter((e) => e.isFavorite === true);
   const filteredSlugs = filteredFavorites.map((e) => e.slug);
   const filteredPieces = pieces.filter((e) => filteredSlugs.includes(e.slug));
-
-  return <ArtPieces pieces={filteredPieces} />;
+  console.log("fpi", filteredPieces);
+  return (
+    <ArtPieces
+      pieces={filteredPieces}
+      onToggleFavorite={onToggleFavorite}
+      artPiecesInfo={artPiecesInfo}
+    />
+  );
 }
