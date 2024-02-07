@@ -18,48 +18,41 @@ export default function ArtPieceDetails({
   isFavorite,
   onToggleFavorite,
   artPiecesInfo,
-  onSubmitComment
+  onSubmitComment,
 }) {
-  const router = useRouter()
+  const router = useRouter();
   function handleClick() {
-    router.push("/art-pieces/")
+    router.push("/art-pieces/");
   }
   return (
     <>
-      <button
-        className="back-to-list-button"
-        onClick={handleClick}
-      >
-        Back to Overview
+      <button className="back-to-list-button" onClick={handleClick}>
+        &larr; Back to Overview
       </button>
-      <StyledArticle className="details-container">
+
+      <h1>{title}</h1>
+
+      <article className="art-piece-details-container">
         <FavoriteButton
           isFavorite={isFavorite}
           onToggleFavorite={onToggleFavorite}
         />
-        <Image src={image} alt={title} width={width} height={height} />
-        <article>
+
+        <Image
+          className="art-pieces-detail__img"
+          src={image}
+          alt={title}
+          width={width}
+          height={height}
+        />
+
+        <p className="art-piece-description">
           {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
-        </article>
-      </StyledArticle>
-      {/* <Comments comments={comments} /> */}
+        </p>
+      </article>
+
       <Comments artPiecesInfo={artPiecesInfo} />
-      <CommentForm
-        onSubmitComment={onSubmitComment}
-        slug={slug}
-      />
+      <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
     </>
   );
 }
-
-//like so  for list page on image. image needs to be a link
-//<Link href={router.push({`${pathname}/${????.slug}`})}>Image</Link>
-
-const StyledArticle = styled.article`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-`;

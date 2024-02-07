@@ -1,0 +1,190 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-white: white;
+  --color-dark: #333333;
+  --color-black: black;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 20px;
+
+  margin-bottom: 80px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* a:hover {
+  text-decoration: underline;
+} */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ///   NAVIGATION   /// */
+
+button {
+  all: unset;
+}
+
+ul {
+  list-style: none;
+}
+
+.navbar {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  box-shadow: var(--color-dark) 0 1px 30px;
+}
+
+.navbar-item {
+  font-size: 14pt;
+  background-color: var(--color-dark);
+  text-align: center;
+}
+
+.navbar-item:not(:last-child) {
+  border-right: 1px solid var(--color-white);
+}
+
+.navbar-item a {
+  font-size: 14pt;
+  color: var(--color-white);
+}
+
+/* ///   NAVIGATION    /// */
+
+/* ///   SPOTLIGHT PAGE    /// */
+
+.spotlight-art-piece-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  width: 80vw;
+}
+
+/* .favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+} */
+
+.art-pieces-list-preview-spotlight__img {
+  width: 100%;
+  height: auto;
+
+  border-radius: 1%;
+}
+
+figcaption {
+  color: var(--color-dark);
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* ///   SPOTLIGHT PAGE    /// */
+
+/* ///   ArtPieces    /// */
+
+/* .art-pieces-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* ///   ArtPieces    /// */
+
+/* ///   ArtPiecePreview    /// */
+
+.art-pieces-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  text-decoration: none;
+
+  position: relative;
+  width: 50vw;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.art-pieces-list-preview-item__img {
+  width: 100%;
+  height: auto;
+
+  border-radius: 1%;
+}
+
+/* ///   ArtPieceDetails    /// */
+
+.art-piece-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  width: 80vw;
+}
+
+/* .favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  } */
+
+.art-pieces-detail__img {
+  width: 100%;
+  height: auto;
+}
+
+.art-piece-description {
+  padding: 20px;
+}
+
+.back-to-list-button {
+  margin-right: auto;
+  font-style: italic;
+}
+/* ///   ArtPieceDetails    /// */
