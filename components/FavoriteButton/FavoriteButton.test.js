@@ -29,3 +29,17 @@ test('Clicking the favorite-button on a non-favorite piece saves it as a favorit
 
 
 //  Clicking the favorite-button on a favorite piece removes it from favorites 🖼️
+test('Clicking the favorite-button on a favorite piece removes it from favorites', () => {
+    const isFavorite = true; // Define isFavorite as false
+    const handleToggleFavorite = jest.fn(); // Mock onToggleFavorite function
+    render(<FavoriteButton
+        isFavorite={isFavorite}
+        onToggleFavorite={handleToggleFavorite}
+    />
+    )
+
+    const favButtonToggled = screen.getByTestId("button-id")
+    fireEvent.click(favButtonToggled)
+
+    expect(handleToggleFavorite).toHaveBeenCalledTimes(1)
+})
