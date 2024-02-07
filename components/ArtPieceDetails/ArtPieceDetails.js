@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import CommentForm from "../CommentForm/CommentForm";
 import Comments from "../Comments/Comments";
+import { useState } from "react";
 
 export default function ArtPieceDetails({
   colors,
@@ -16,7 +17,7 @@ export default function ArtPieceDetails({
   genre,
   width,
   height,
-  isFavorite,
+  setArtPiecesInfo,
   onToggleFavorite,
   artPiecesInfo,
   onSubmitComment,
@@ -25,6 +26,41 @@ export default function ArtPieceDetails({
   function handleClick() {
     router.push("/art-pieces/");
   }
+
+  //make artist name start with upper case
+  const artistUpper = artist
+    .split(" ")
+    .map((e) => {
+      return e
+        .split("")
+        .map((e, i) => (i === 0 ? e.toUpperCase() : e))
+        .join("");
+    })
+    .join(" ");
+
+  //fancy word blender
+  // let fancyWord = "";
+  const [fancy, setFancy] = useState();
+  useEffect(() => {
+    function makeFancyWord() {
+      const fancyArray = [
+        "wonderful",
+        "spectacular",
+        "infamous",
+        "gorgeous",
+        "genious",
+        "awesome",
+        "excellent",
+        "brilliant",
+      ];
+      const randomIndex = Math.floor(Math.random() * fancyArray.length);
+      const fancyWord = fancyArray[randomIndex];
+      return fancyWord;
+    }
+
+    setFancy(makeFancyWord());
+  }, []);
+
   return (
     <>
       <button className="back-to-list-button" onClick={handleClick}>
@@ -32,8 +68,11 @@ export default function ArtPieceDetails({
       </button>
       <StyledArticle className="details-container">
         <FavoriteButton
-          isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
+          isFavorite={
+            artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === slug)
+              ?.isFavorite
+          }
+          onToggleFavorite={() => onToggleFavorite(slug)}
         />
         <Image
           src={image}
@@ -44,7 +83,7 @@ export default function ArtPieceDetails({
         />
 
         <article>
-          {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+          {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
         <h3>Color Palette:</h3>
         <StyledDivContainer>

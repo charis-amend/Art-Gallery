@@ -10,6 +10,8 @@ export default function ArtPieceDetailsPage({
   pieces,
   onSubmitComment,
   artPiecesInfo,
+  onToggleFavorite,
+  setArtPiecesInfo,
 }) {
   const router = useRouter();
   const slug = router.query.slug;
@@ -22,6 +24,7 @@ export default function ArtPieceDetailsPage({
           <title>Details</title>
         </Head>
         <ArtPieceDetails
+          setArtPiecesInfo={setArtPiecesInfo}
           image={hit.imageSource}
           title={hit.name}
           artist={hit.artist}
@@ -33,6 +36,7 @@ export default function ArtPieceDetailsPage({
           slug={hit.slug}
           onSubmitComment={onSubmitComment}
           artPiecesInfo={artPiecesInfo}
+          onToggleFavorite={onToggleFavorite}
         />
       </StyledMain>
     </>
