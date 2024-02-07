@@ -23,7 +23,7 @@ const testObject = {
 
 
 
-test("image  button title artist year and genre are displayed", () => {
+test("image  button title artist year and genre are displayed in artpiecedetails page", () => {
   render(
     <ArtPieceDetails
       year={testObject.year}
