@@ -226,6 +226,7 @@ figcaption {
 .art-pieces-detail__img {
   width: 100%;
   height: auto;
+  box-shadow: black 1px 1px 1px 5px;
 }
 
 .art-piece-description {
