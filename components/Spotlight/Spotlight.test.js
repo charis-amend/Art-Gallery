@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Spotlight from "./Spotlight";
+import { useRouter } from "next/router";
 // Test for:
 // - The art piece image is displayed
 // - The art piece artist is displayed
