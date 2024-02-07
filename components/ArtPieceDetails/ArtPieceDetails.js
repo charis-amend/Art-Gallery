@@ -64,61 +64,48 @@ export default function ArtPieceDetails({
   return (
     <>
       <button className="back-to-list-button" onClick={handleClick}>
-        &larr; Back to Overview
+        &larr; Overview
       </button>
 
-      <h1>{title}</h1>
+      <div className="art-piece-details-container">
+        <h2>{title}</h2>
+        <article className="art-piece-details-container">
+          <FavoriteButton
+            isFavorite={
+              artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === slug)
+                ?.isFavorite
+            }
+            onToggleFavorite={() => onToggleFavorite(slug)}
+          />
 
-      <article className="art-piece-details-container">
-        <FavoriteButton
-          isFavorite={
-            artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === slug)
-              ?.isFavorite
-          }
-          onToggleFavorite={() => onToggleFavorite(slug)}
-        />
-        <Image className="art-pieces-detail__img"
-          src={image}
-          alt={title}
-          width={width / 4}
-          height={height / 4}
-          priority={true}
-        />
+          <Image
+            className="art-pieces-detail__img"
+            src={image}
+            alt={title}
+            width={width / 4}
+            height={height / 4}
+            priority={true}
+          />
 
-        <p className="art-piece-description">
-          {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
-        </p>
-      </article>
-
-      <article className="art-piece-description">
-        {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
-      </article>
-      <h3>Color Palette:</h3>
-      <StyledDivContainer>
-        {colors.map((e, i) => (
-          <StyledDiv key={i} style={{ backgroundColor: e }} />
-        ))}
-      </StyledDivContainer>
-
-      {/* <Comments comments={comments} /> */}
-
+          <p className="art-piece-description">
+            {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+          </p>
+        </article>
+        <h3>Color Palette</h3>
+        <StyledDivContainer>
+          {colors.map((e, i) => (
+            <StyledDiv key={i} style={{ backgroundColor: e }} />
+          ))}
+        </StyledDivContainer>
+      </div>
       <Comments artPiecesInfo={artPiecesInfo} />
       <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
     </>
   );
 }
 
-//like so  for list page on image. image needs to be a link
+//like so for list page on image. image needs to be a link
 //<Link href={router.push({`${pathname}/${????.slug}`})}>Image</Link>
-
-const StyledArticle = styled.article`
-  display: flex;
-  align-self: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-`;
 
 const StyledDiv = styled.div`
   display: flex;

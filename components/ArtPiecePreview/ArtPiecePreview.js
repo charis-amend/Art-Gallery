@@ -31,9 +31,9 @@ export default function ArtPiecePreview({
             priority={true}
           />
 
-          <span className="art-pieces-list-preview-item__caption">
+          <h6 className="art-pieces-list-preview-item__caption">
             {`"${title}" by ${artist}`}
-          </span>
+          </h6>
         </Link>
       </div>
     </>

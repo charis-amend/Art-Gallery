@@ -26,7 +26,6 @@ export default function Spotlight({ pieces, onToggleFavorite, artPiecesInfo }) {
 
   return (
     <>
-
       <h1>ART GALLERY</h1>
       <div className="spotlight-art-piece-container">
         <FavoriteButton
@@ -48,7 +47,9 @@ export default function Spotlight({ pieces, onToggleFavorite, artPiecesInfo }) {
               width={randomPiece.dimensions.width}
               height={randomPiece.dimensions.height}
             />
-            <figcaption>{randomPiece.artist}</figcaption>
+            <figcaption>
+              <h3>{randomPiece.artist}</h3>
+            </figcaption>
           </Link>
         </figure>
       </div>

@@ -11,17 +11,17 @@ export default function CommentForm({ onSubmitComment, slug }) {
 
   return (
     <form className="comment-form" onSubmit={handleSubmit}>
-      <div className="comment-form__fields">
-        <div className="comment-form__field">
-          <label htmlFor="comment">Add comment:</label>
-          <textarea name="comment" id="comment" rows="4" />
-        </div>
-        <div className="comment-form__button-wrapper">
-          <button className="send-comment-button" type="submit">
-            Send
-          </button>
-        </div>
-      </div>
+      <label htmlFor="comment">Add comment:</label>
+      <textarea
+        className="comment-text-input"
+        name="comment"
+        id="comment"
+        rows="4"
+        required
+      />
+      <button className="send-comment-button" type="submit">
+        Send
+      </button>
     </form>
   );
 }
