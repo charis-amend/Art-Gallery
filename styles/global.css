@@ -150,6 +150,10 @@ figcaption {
   right: 10px;
 }
 
+/* .button-img {
+  box-shadow: white 1px 1px 5px 5px;
+} */
+
 .art-pieces-list-preview-item__img {
   width: 100%;
   height: auto;

@@ -12,7 +12,7 @@ jest.mock("next/router", () => ({
 // - Each comment's date and time is displayed
 
 // Example data:
-const comments = [
+const testComments = [
   {
     id: "1",
     artPiece: "slug",
@@ -34,11 +34,11 @@ test("renders a list of comments with the headline 'Comments'", () => {
   useRouter.mockReturnValue({
     query: { slug: "my-slug" },
   });
-  //
-  render(<Comments comments={comments} />);
+  render(
+    <Comments artPiecesInfo={testComments} />);
 
-  const headline = screen.getByText(/Comments/i);
-  expect(headline).toBeInTheDocument();
+  const headlineOfComments = screen.getByRole("heading", { level: 3 })
+  expect(headlineOfComments).toBeInTheDocument();
 });
 
 // THESE TESTS ARE FAILING

@@ -17,7 +17,6 @@ export default function ArtPieceDetails({
   genre,
   width,
   height,
-  setArtPiecesInfo,
   onToggleFavorite,
   artPiecesInfo,
   onSubmitComment,
