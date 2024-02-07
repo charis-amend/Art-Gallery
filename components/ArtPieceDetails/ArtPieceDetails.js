@@ -25,6 +25,31 @@ export default function ArtPieceDetails({
   function handleClick() {
     router.push("/art-pieces/");
   }
+
+  //make artist name start with upper case
+  const artistUpper = artist
+    .split(" ")
+    .map((e) => {
+      return e
+        .split("")
+        .map((e, i) => (i === 0 ? e.toUpperCase() : e))
+        .join("");
+    })
+    .join(" ");
+
+  //fancy word blender
+  const fancyArray = [
+    "wonderful",
+    "spectacular",
+    "infamous",
+    "gorgeous",
+    "genious",
+    "awesome",
+    "excellent",
+    "brilliant",
+  ];
+  const randomIndex = Math.floor(Math.random() * fancyArray.length);
+  const fancyWord = fancyArray[randomIndex];
   return (
     <>
       <button className="back-to-list-button" onClick={handleClick}>
@@ -44,7 +69,7 @@ export default function ArtPieceDetails({
         />
 
         <article>
-          {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+          {`The artist ${artistUpper} created this ${fancyWord} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
         <h3>Color Palette:</h3>
         <StyledDivContainer>

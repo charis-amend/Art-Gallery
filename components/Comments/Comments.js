@@ -4,21 +4,21 @@ export default function Comments({ artPiecesInfo }) {
   const router = useRouter();
   const slug = router.query.slug;
 
-  const filteredComments = artPiecesInfo?.filter(
-    (comment) => comment.artPiece === slug
+  const [filteredComments] = artPiecesInfo?.filter(
+    (e) => e.comment && e.slug === slug
   );
-
+  console.log("fic", filteredComments && filteredComments.comment);
   return (
     <div className="comments">
       <h3>Comments</h3>
-      {filteredComments?.map((comment, index) => (
-        <ul key={comment.id}>
-          <li>
-            &#34;{comment.comment}&#34; &#40;{comment.date}, {comment.time}
-            &#41;
-          </li>
-        </ul>
-      ))}
+      {filteredComments &&
+        filteredComments?.comment.map((e) => (
+          <ul key={e.id}>
+            <li>
+              {e.comment} ({e.date}, {e.time})<br></br>
+            </li>
+          </ul>
+        ))}
     </div>
   );
 }

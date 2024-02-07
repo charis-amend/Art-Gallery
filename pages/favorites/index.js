@@ -12,10 +12,12 @@ import React from "react";
 
 // artPiecesInfo needs to be passed a prop, mockup deleted
 
-export default function Favorites({ pieces, artPiecesInfo }) {
+export default function Favorites({ pieces, artPiecesInfo, onToggleFavorite }) {
   const filteredFavorites = artPiecesInfo.filter((e) => e.isFavorite === true);
   const filteredSlugs = filteredFavorites.map((e) => e.slug);
   const filteredPieces = pieces.filter((e) => filteredSlugs.includes(e.slug));
-
-  return <ArtPieces pieces={filteredPieces} />;
+  //console.log("api", artPiecesInfo);
+  return (
+    <ArtPieces pieces={filteredPieces} onToggleFavorite={onToggleFavorite} />
+  );
 }

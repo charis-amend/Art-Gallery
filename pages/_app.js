@@ -11,7 +11,9 @@ const fetcher = async (url) => {
   // If the status code is not in the range 200-299,
   // we still try to parse and throw it.
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the data. --> see _app.js file fetcher async function.");
+    const error = new Error(
+      "An error occurred while fetching the data. --> see _app.js file fetcher async function."
+    );
     // Attach extra info to the error object.
     error.info = await response.json();
     error.status = response.status;
@@ -20,13 +22,19 @@ const fetcher = async (url) => {
   return response.json();
 };
 
-
-
-
 export default function App({ Component, pageProps }) {
-  const { data: pieces, error, isLoading } = useSWR("https://example-apis.vercel.app/api/art", fetcher)
+  const {
+    data: pieces,
+    error,
+    isLoading,
+  } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
 
-  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState("artPiecesInfo", { defaultValue: [] })
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: [],
+    }
+  );
 
   function handleToggleFavorite(slug) {
     if (artPiecesInfo.find((piece) => piece.slug === slug)) {
@@ -35,23 +43,17 @@ export default function App({ Component, pageProps }) {
         // setting the global state of the artpiecesinfo-array new with mapping:
         // map over each artpieceinfo and update the array, but only...
         artPiecesInfo.map((artpieceinfo) =>
-          // ... only update  the artpieceinfo which matches the clicked-artpiece-slug 
-          artpieceinfo.slug === slug ?
-            // spread the rest of the object, and switch the isFavorite value to opposite value
-            { ...artpieceinfo, isFavorite: !artpieceinfo.isFavorite }
-            :
-            // if doesnt match then just return the object without any change:
-            artpieceinfo
+          // ... only update  the artpieceinfo which matches the clicked-artpiece-slug
+          artpieceinfo.slug === slug
+            ? // spread the rest of the object, and switch the isFavorite value to opposite value
+              { ...artpieceinfo, isFavorite: !artpieceinfo.isFavorite }
+            : // if doesnt match then just return the object without any change:
+              artpieceinfo
         )
-      )
+      );
       // if there is not a (piece) => piece.slug === slugOfArtPieceClicked, then set it to true:
     } else {
-      setArtPiecesInfo(
-        [
-          ...artPiecesInfo,
-          { slug, isFavorite: true }
-        ]
-      )
+      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
     }
   }
 
@@ -62,16 +64,32 @@ export default function App({ Component, pageProps }) {
     });
     const time = new Date().toLocaleTimeString("en-gb");
     const artPiece = slug;
-    setArtPiecesInfo([
-      { id: uid(), date, time, artPiece, ...newComment },
-      ...artPiecesInfo,
-    ]);
+    const comment = newComment.comment;
+
+    if (artPiecesInfo.find((e) => e.slug === slug)) {
+      setArtPiecesInfo((prevState) =>
+        prevState.map((e) =>
+          e.slug === slug
+            ? {
+                ...e,
+                comment: [...(e.comment || []), { comment, date, time }],
+              }
+            : e
+        )
+      );
+    } else {
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        { slug, id: uid(), comment: [{ comment, date, time }] },
+      ]);
+    }
   }
+
   console.log("Do we have comments? ", artPiecesInfo);
   // COMMENTS COMPONENT
 
-  if (error) return <div>{error}</div>
-  if (isLoading) return <spinner>... loading your art pieces.</spinner>
+  if (error) return <div>{error}</div>;
+  if (isLoading) return <spinner>... loading your art pieces.</spinner>;
 
   return (
     <>
@@ -86,7 +104,7 @@ export default function App({ Component, pageProps }) {
             onToggleFavorite={handleToggleFavorite}
             comments={artPiecesInfo}
             onSubmitComment={handleAddComment}
-
+            isFavorite={artPiecesInfo.isFavorite}
           />
         </Layout>
       </SWRConfig>
