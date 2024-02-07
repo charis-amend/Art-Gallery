@@ -64,9 +64,12 @@ export default function ArtPieceDetails({
   return (
     <>
       <button className="back-to-list-button" onClick={handleClick}>
-        Back to Overview
+        &larr; Back to Overview
       </button>
-      <StyledArticle className="details-container">
+
+      <h1>{title}</h1>
+
+      <article className="art-piece-details-container">
         <FavoriteButton
           isFavorite={
             artPiecesInfo?.find((artpieceinfo) => artpieceinfo.slug === slug)
@@ -74,7 +77,7 @@ export default function ArtPieceDetails({
           }
           onToggleFavorite={() => onToggleFavorite(slug)}
         />
-        <Image
+        <Image className="art-pieces-detail__img"
           src={image}
           alt={title}
           width={width / 4}
@@ -82,7 +85,12 @@ export default function ArtPieceDetails({
           priority={true}
         />
 
-        <article>
+        <p className="art-piece-description">
+          {`The artist ${artist} created this wonderful piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
+        </p>
+      </article>
+
+        <article className="art-piece-description">
           {`The artist ${artistUpper} created this ${fancy} piece with the title ${title} in the year ${year}. We consider the genre to be ${genre}.`}
         </article>
         <h3>Color Palette:</h3>
@@ -93,6 +101,7 @@ export default function ArtPieceDetails({
         </StyledDivContainer>
       </StyledArticle>
       {/* <Comments comments={comments} /> */}
+
       <Comments artPiecesInfo={artPiecesInfo} />
       <CommentForm onSubmitComment={onSubmitComment} slug={slug} />
     </>

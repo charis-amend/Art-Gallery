@@ -26,6 +26,9 @@ export default function Spotlight({ pieces, onToggleFavorite, artPiecesInfo }) {
 
   return (
     <>
+
+<h1>ART GALLERY</h1>
+      <div className="spotlight-art-piece-container">
       <FavoriteButton
         // isFavorite={isFavorite}
         // onToggleFavorite={onToggleFavorite}
@@ -48,12 +51,7 @@ export default function Spotlight({ pieces, onToggleFavorite, artPiecesInfo }) {
           <figcaption>{randomPiece.artist}</figcaption>
         </Link>
       </figure>
+       </div>
     </>
   );
 }
-
-// Resizing image
-const StyledImage = styled(Image)`
-  width: 20%;
-  height: 20%;
-`;

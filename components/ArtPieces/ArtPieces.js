@@ -7,12 +7,16 @@ import Link from "next/link";
 export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
   return (
     <>
-      <Head>Art Pieces</Head>
+      <Head>
+        <title>Art Pieces</title>
+      </Head>
+      <h1>ART GALLERY</h1>
 
       <ul className="art-pieces-list">
         {pieces.map((piece) => {
           return (
             <li key={piece.slug} className="art-pieces-list__preview-item">
+
               <ArtPiecePreview
                 image={piece.imageSource}
                 width={piece.dimensions.width}

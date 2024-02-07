@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import { uid } from "uid";
+import "../styles/global.css";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -31,6 +32,7 @@ export default function App({ Component, pageProps }) {
 
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "artPiecesInfo",
+
     {
       defaultValue: [],
     }
@@ -104,6 +106,7 @@ export default function App({ Component, pageProps }) {
             onToggleFavorite={handleToggleFavorite}
             comments={artPiecesInfo}
             onSubmitComment={handleAddComment}
+
             isFavorite={artPiecesInfo.isFavorite}
             setArtPiecesInfo={setArtPiecesInfo}
           />
